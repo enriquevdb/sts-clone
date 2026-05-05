@@ -63,6 +63,8 @@ The goal isn't to ship a commercial game. It's to **become a competent C# / Godo
 
 ---
 
+<img width="1152" height="650" alt="image" src="https://github.com/user-attachments/assets/adf871ed-84e6-4e20-aafe-00e987fdc3cc" />
+
 ## Project Structure
 
 ```
