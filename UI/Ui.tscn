@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dkc4auoyq85p4"]
+
+[ext_resource type="Script" uid="uid://ooi1sja05uxn" path="res://UI/Ui.cs" id="1_b3bc3"]
+[ext_resource type="PackedScene" uid="uid://d4a3i4xnejo5w" path="res://UI/Hand.tscn" id="2_oahb0"]
+
+[node name="UI" type="Control" unique_id=761599995]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b3bc3")
+
+[node name="Health" type="Label" parent="." unique_id=2090375535]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Energy" type="Label" parent="." unique_id=669796804]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 173.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 36
+
+[node name="Shield" type="Label" parent="." unique_id=776922029]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Hand" parent="." unique_id=1445765175 instance=ExtResource("2_oahb0")]
+layout_mode = 1
+
+[node name="End Round" type="Button" parent="." unique_id=2008962051]
+layout_mode = 0
+offset_left = 1011.0
+offset_top = 495.0
+offset_right = 1109.0
+offset_bottom = 526.0
+text = "End Round"
+
+[node name="Draw Count" type="Label" parent="." unique_id=375363875]
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 600.0
+offset_right = 1060.0
+offset_bottom = 623.0
+
+[node name="Discard Count" type="Label" parent="." unique_id=592117974]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 600.0
+offset_right = 60.0
+offset_bottom = 623.0
+
+[node name="Block" type="Label" parent="." unique_id=684051120]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="End Round" to="." method="OnRoundEndPressed"]

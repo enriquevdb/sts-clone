@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bn77320q3hgya"]
+
+[ext_resource type="Script" uid="uid://w2mmk74fqgnb" path="res://Cards/Card.cs" id="1_dd2wi"]
+
+[node name="Card" type="Control" unique_id=497310505]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dd2wi")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=621056948]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 128.0
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1170497187]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="Panel/VBoxContainer" unique_id=1837530943]
+custom_minimum_size = Vector2(10, 30)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="Name" type="Label" parent="Panel/VBoxContainer" unique_id=358587182]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=134642921]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 14
+horizontal_alignment = 1

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bou1tjq6ji810"]
+
+[ext_resource type="Texture2D" uid="uid://yccpdburbeiy" path="res://Textures/Background/craftpix-net-823949-free-nature-backgrounds-pixel-art/nature_1/orig.png" id="1_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://6i412xaywffr" path="res://Enemy.tscn" id="2_fos0i"]
+[ext_resource type="PackedScene" uid="uid://cstxrbmy146oc" path="res://Player.tscn" id="3_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://dkc4auoyq85p4" path="res://UI/Ui.tscn" id="4_lgr22"]
+[ext_resource type="PackedScene" uid="uid://dsfol2q22td7f" path="res://Managers/CombatManager.tscn" id="5_fos0i"]
+
+[node name="Main" type="Node2D" unique_id=2092356483]
+
+[node name="Background" type="TextureRect" parent="." unique_id=1249392350]
+offset_top = -289.0
+offset_right = 1152.0
+offset_bottom = 647.0
+texture = ExtResource("1_cm0pq")
+
+[node name="Player" parent="." unique_id=658857929 instance=ExtResource("3_3dxm6")]
+position = Vector2(291, 416)
+
+[node name="UI" parent="." unique_id=761599995 instance=ExtResource("4_lgr22")]
+
+[node name="Enemies" type="Node2D" parent="." unique_id=693403231]
+
+[node name="Enemy" parent="Enemies" unique_id=471516393 groups=["Enemies"] instance=ExtResource("2_fos0i")]
+position = Vector2(880, 416)
+
+[node name="CombatManager" parent="." unique_id=157971658 instance=ExtResource("5_fos0i")]

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://6i412xaywffr"]
+
+[ext_resource type="Script" uid="uid://co1p2cfva0ovr" path="res://Enemy.cs" id="1_s7bn3"]
+[ext_resource type="Texture2D" uid="uid://nd7vrhf7penv" path="res://icon.svg" id="2_qi2p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(118, 121)
+
+[node name="Enemy" type="StaticBody2D" unique_id=1277162815]
+input_pickable = true
+script = ExtResource("1_s7bn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1552269037]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=445484743]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("2_qi2p4")
+
+[node name="Health" type="Label" parent="." unique_id=123084005]
+offset_left = -50.0
+offset_top = -108.0
+offset_right = 52.0
+offset_bottom = -74.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Block" type="Label" parent="." unique_id=436155475]
+offset_left = 64.0
+offset_top = -91.0
+offset_right = 104.0
+offset_bottom = -68.0
+text = "Block"
+
+[node name="Intent Action" type="Label" parent="." unique_id=1855415427]
+offset_left = -50.0
+offset_top = -140.0
+offset_right = -10.0
+offset_bottom = -117.0
+text = "Action"
+
+[node name="Intent Amount" type="Label" parent="." unique_id=1801616360]
+offset_left = 8.0
+offset_top = -140.0
+offset_right = 48.0
+offset_bottom = -117.0
+text = "Amount"
