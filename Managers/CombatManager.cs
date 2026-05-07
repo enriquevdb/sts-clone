@@ -6,7 +6,7 @@ using System.Linq;
 public partial class CombatManager : Node
 {
 	// Private Variables
-	private Ui _ui;
+	private UI _ui;
 	private Player _player;
 	private List<Enemy> _enemies = new List<Enemy>();
 	private Hand _hand;
@@ -28,7 +28,7 @@ public partial class CombatManager : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_ui = GetNode<Ui>("/root/Main/UI");
+		_ui = GetNode<UI>("/root/Main/UI");
 		_player = GetNode<Player>("/root/Main/Player");
 
 		_hand = GetNode<Hand>("/root/Main/UI/Hand");
@@ -76,6 +76,7 @@ public partial class CombatManager : Node
 			case State.EndOfPlayerTurn:
 				GD.Print("End Of Player Turn");
 				_hand.ClearHand();
+				_player.TickEffect();
 				ChangeState(State.StartOfEnemyTurn);
 				break;
 			case State.StartOfEnemyTurn:
@@ -92,6 +93,10 @@ public partial class CombatManager : Node
 				break;
 			case State.EndOfEnemyTurn:
 				GD.Print("End Of Enemy Turn");
+				foreach(Enemy enemy in _enemies)
+				{
+					enemy.TickEffect();
+				}
 				ChangeState(State.StartOfPlayerTurn);
 				break;
 			case State.Victory:

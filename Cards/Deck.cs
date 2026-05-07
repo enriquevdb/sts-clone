@@ -42,8 +42,9 @@ public partial class Deck : Node
 
 	public void PopulateStarterDeck()
 	{
-		for (int i = 0; i < 6; i++) AddCard(new Strike());
-		for (int i = 0; i < 4; i++) AddCard(new Defend());		
+		for (int i = 0; i < 5; i++) AddCard(new Strike());
+		for (int i = 0; i < 2; i++) AddCard(new Bash());
+		for (int i = 0; i < 4; i++) AddCard(new Defend());
 	}
 
 	public void Shuffle(List<CardData> pile)

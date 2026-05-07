@@ -14,6 +14,7 @@ public abstract class StatusEffect
         Stacks = stacks;
     }
 
+    public virtual int ModifyDamageReceived(int damage) => damage;
     public virtual void Apply(Player player) { }
     public virtual void Apply(Enemy enemy) { }
     public virtual void Remove(Player player) { }

@@ -24,6 +24,8 @@ public partial class Player : StaticBody2D
 	public delegate void OnDeathEventHandler();
 	[Signal]
 	public delegate void OnClickEventHandler();
+	[Signal]
+	public delegate void StatusEffectUpdateEventHandler(string effect, int stacks);
 
 	public int Health
 	{
@@ -63,6 +65,9 @@ public partial class Player : StaticBody2D
 
 	public void TakeDamage(int amount)
 	{
+		foreach(StatusEffect effect in _effects)
+			amount = effect.ModifyDamageReceived(amount);
+		
 		int remainingDmg = amount - _block;
 		Block = Math.Max(0, _block - amount);
 		if (remainingDmg > 0) Health -= remainingDmg;
@@ -74,11 +79,13 @@ public partial class Player : StaticBody2D
 		if (existing != null)
 		{
 			existing.Stacks += effect.Stacks;
+			EmitSignal(SignalName.StatusEffectUpdate, existing.Name, existing.Stacks);
 		}
 		else
 		{
 			_effects.Add(effect);
 			effect.Apply(this);
+			EmitSignal(SignalName.StatusEffectUpdate, effect.Name, effect.Stacks);
 		}
 	}
 	public void TickEffect()
@@ -87,6 +94,7 @@ public partial class Player : StaticBody2D
 		foreach (StatusEffect effect in _effects)
 		{
 			effect.Tick();
+			EmitSignal(SignalName.StatusEffectUpdate, effect.Name, effect.Stacks);
 			if (effect.IsExpired)
 			{
 				toRemove.Add(effect);

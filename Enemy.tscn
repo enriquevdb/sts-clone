@@ -49,3 +49,7 @@ offset_top = -140.0
 offset_right = 48.0
 offset_bottom = -117.0
 text = "Amount"
+
+[node name="Status Effects" type="VBoxContainer" parent="." unique_id=250833443]
+offset_right = 40.0
+offset_bottom = 23.0

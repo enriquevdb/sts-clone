@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkc4auoyq85p4"]
 
-[ext_resource type="Script" uid="uid://ooi1sja05uxn" path="res://UI/Ui.cs" id="1_b3bc3"]
+[ext_resource type="Script" uid="uid://d2i0545fj420b" path="res://UI/UI.cs" id="1_c10ag"]
 [ext_resource type="PackedScene" uid="uid://d4a3i4xnejo5w" path="res://UI/Hand.tscn" id="2_oahb0"]
 
 [node name="UI" type="Control" unique_id=761599995]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b3bc3")
+script = ExtResource("1_c10ag")
 
 [node name="Health" type="Label" parent="." unique_id=2090375535]
 layout_mode = 0
@@ -59,6 +59,11 @@ offset_right = 60.0
 offset_bottom = 623.0
 
 [node name="Block" type="Label" parent="." unique_id=684051120]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Status Effects" type="VBoxContainer" parent="." unique_id=407799544]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

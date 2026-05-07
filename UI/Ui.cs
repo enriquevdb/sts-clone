@@ -1,7 +1,8 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
-public partial class Ui : Control
+public partial class UI : Control
 {
 	private Label _healthLabel;
 	private Label _energyLabel;
@@ -10,6 +11,8 @@ public partial class Ui : Control
 	private Label _discardCount;
 	private Button _endRound;
 	private Player _player;
+	private VBoxContainer _statusEffects;
+	private Dictionary<string, Label> _effectLabels = new Dictionary<string, Label>();
 
 	[Signal]
 	public delegate void EndTurnPressedEventHandler();
@@ -24,10 +27,13 @@ public partial class Ui : Control
 		_discardCount = GetNode<Label>("Discard Count");
 		_endRound = GetNode<Button>("End Round");
 		_energyLabel = GetNode<Label>("Energy");
+		_statusEffects = GetNode<VBoxContainer>("Status Effects");
+		_statusEffects.Position = _player.Position + new Vector2(-220, -60);
 
 		_player.HealthChanged += OnHealthChanged;
 		_player.EnergyChanged += OnEnergyChanged;
 		_player.BlockChanged += OnBlockChanged;
+		_player.StatusEffectUpdate += OnStatusEffectChanged;
 
 		_player.Deck.OnCardDraw += OnDrawPileChanged;
 		_player.Deck.OnDiscard += OnDiscardPileChanged;
@@ -62,6 +68,29 @@ public partial class Ui : Control
 	private void OnDrawPileChanged()
 	{
 		_drawCount.Text = $"Draw Pile: {_player.Deck.DrawPileCount}";
+	}
+
+	private void OnStatusEffectChanged(string effectName, int stacks)
+	{
+		if (stacks <= 0)
+		{
+			if (_effectLabels.TryGetValue(effectName, out Label label))
+			{
+				label.QueueFree();
+				_effectLabels.Remove(effectName);
+			}
+		}
+		else if (_effectLabels.TryGetValue(effectName, out Label existingLabel))
+		{
+			existingLabel.Text = $"{effectName}: {stacks}";
+		}
+		else
+		{
+			Label newLabel = new Label();
+			newLabel.Text = $"{effectName}: {stacks}";
+			_statusEffects.AddChild(newLabel);
+			_effectLabels[effectName] = newLabel;
+		}
 	}
 
 	private void OnDiscardPileChanged()

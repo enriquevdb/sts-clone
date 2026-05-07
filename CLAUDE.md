@@ -211,7 +211,8 @@ Track current progress here. Update status as tasks are completed.
 | Implement 3 Skill cards (Defend, Shrug It Off, Flex)     | 🔄 In Progress | Separation of concerns             |
 | Implement 3 Power cards (Strength, Inflame, Metallicize) | ⬜             | Persistent effects, state tracking |
 | Block mechanic (absorbs damage before HP)                | ✅ Done        | Property logic, combat math        |
-| Status effects (Vulnerable, Weak, Strength)              | ⬜             | Composition, modifier stacking     |
+| Status effects (Vulnerable, Weak, Strength)              | 🔄 In Progress | Composition, modifier stacking     |
+| Status effect UI (labels per effect, stack & tick)       | ✅ Done        | Signals, Dictionary, VBoxContainer |
 
 ---
 
@@ -267,5 +268,6 @@ Track current progress here. Update status as tasks are completed.
 
 ## Current Focus
 
-**Phase 1 — Core Combat**
-Next task: Finish remaining Attack cards (Bash, Headbutt) + Skill cards (Shrug It Off, Flex) + enemy intent UI
+**Phase 2 — Cards & Deck Building**
+Completed: Strike, Bash, Defend. Status effect system (Vulnerable) + UI done.
+Next: Headbutt (Attack) → Shrug It Off + Flex (Skill) → Weak + Strength (status effects) → Power cards
